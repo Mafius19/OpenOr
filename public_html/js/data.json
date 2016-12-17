@@ -1,0 +1,58 @@
+[
+  {
+    "cliente": 8885,
+    "concepto": "alquiler",
+    "descripcion": "aliqua fugiat aliquip quis labore",
+    "cantidad": 74,
+    "estado": "pagado",
+    "fecha": "2015-07-21"
+  },
+  {
+    "cliente": 8885,
+    "concepto": "venta",
+    "descripcion": "xxxxxxxx",
+    "cantidad": 75,
+    "estado": "pagado",
+    "fecha": "2015-07-22"
+  },
+  {
+    "cliente": 7382,
+    "concepto": "venta",
+    "descripcion": "laborum eiusmod quis laborum est",
+    "cantidad": 17,
+    "estado": "pendiente",
+    "fecha": "2014-06-26"
+  },
+  {
+    "cliente": 4200,
+    "concepto": "alquiler",
+    "descripcion": "nulla sint quis reprehenderit aute",
+    "cantidad": 42,
+    "estado": "pagado",
+    "fecha": "2014-04-25"
+  },
+  {
+    "cliente": 6944,
+    "concepto": "alquiler",
+    "descripcion": "enim laborum incididunt fugiat veniam",
+    "cantidad": 41,
+    "estado": "pendiente",
+    "fecha": "2016-02-09"
+  },
+  {
+    "cliente": 3893,
+    "concepto": "venta",
+    "descripcion": "excepteur mollit culpa consequat exercitation",
+    "cantidad": 9,
+    "estado": "pendiente",
+    "fecha": "2014-03-18"
+  },
+  {
+    "cliente": 7249,
+    "concepto": "venta",
+    "descripcion": "sit sunt occaecat sit et",
+    "cantidad": 82,
+    "estado": "pagado",
+    "fecha": "2015-12-23"
+  }
+]

@@ -1,0 +1,103 @@
+<div class="container">
+    <div class="row">
+        <h2>Busqueda de Ordenanzas</h2>
+    </div>
+    <div class="row">
+        <h4>Filtros:</h4>
+        <div class="panel panel-default">
+            <div class="panel-body form-horizontal">
+                <div class="form-group">
+                    <label for="cliente" class="col-sm-3 control-label">Nro. de Ordenanza:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="cliente" name="cliente" placeholder="nro de ordenanza a buscar" ng-model="search.cliente">
+                    </div>
+                </div>                            
+                <div class="form-group">
+                    <label for="concepto" class="col-sm-3 control-label">Palabra Clave:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="concepto" name="concepto" placeholder="palabra clave a buscar" ng-model="search.concepto">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion" class="col-sm-3 control-label">Tema:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="tema a buscar" ng-model="search.descripcion">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="cliente" class="col-sm-3 control-label">Año de Publicacion:</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="cliente" name="cliente" placeholder="año de publicacion a buscar" ng-model="search.cliente">
+                    </div> 
+
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12 text-right">
+<!--
+                        <button class="btn btn-info preview-add-button" id="btnBuscar">
+                            <span class="glyphicon glyphicon-search"></span> Buscar
+                        </button>-->
+
+                        <button class="btn btn-info preview-add-button" id="btnBorrar" ng-click="limpiarInputs()">
+                            <span class="glyphicon glyphicon-trash"></span> Limpiar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>            
+    </div> <!-- / panel preview -->
+
+    <div class="row">
+        <h4>Resultado/s de Busqueda :</h4>
+        <div class="col-xs-12 text-center">
+            <div id="cargando" style="display: none; color:#ff0000;">Cargando...</div> <!-- Establezco el estilo del mensaje de carga -->
+
+            <table class="table table-striped table-responsive" id="tblPagos" ng-table="tableParams">
+                <thead>
+                    <tr>
+                        <th>
+                            <a href="" ng-click="ordenarPor('cliente')">
+                                Nro. de ordenanza
+                            </a>
+                            <span class="caret" style="cursor:pointer" ng-click="ordenarPor('-cliente')"></span>
+                        </th>
+                        <th>
+                            <a href="" ng-click="ordenarPor('concepto')">
+                                Palabra Clave
+                            </a>
+                            <span class="caret" style="cursor:pointer" ng-click="ordenarPor('-concepto')"></span>
+                        </th>
+                        <th>
+                            Tema
+                        </th>
+                        <!--
+                        <th>
+                            <a href="" ng-click="ordenarPor('cantidad')">
+                                Cantidad
+                            </a>
+                            <span class="caret" style="cursor:pointer" ng-click="ordenarPor('-cantidad')"></span>
+                        </th> 
+                        -->
+                        <th>Estado</th>
+                        <th>
+                            <a href="" ng-click="ordenarPor('fecha')">
+                                Fecha
+                            </a>
+                            <span class="caret" style="cursor:pointer" ng-click="ordenarPor('-fecha')"></span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="registro in registros | filter:search | orderBy:ordenSeleccionado">
+                        <td>{{registro.cliente}}</td>
+                        <td>{{registro.concepto | uppercase}}</td>
+                        <td>{{registro.descripcion}}</td>
+                        <!--<td>{{registro.cantidad | currency}}</td> -->
+                        <td>{{registro.estado}}</td>
+                        <td>{{registro.fecha | date:'dd/MM/yyyy'}}</td>
+                    </tr>
+                </tbody> <!-- Los pagos realizados van aquí-->
+            </table>                            
+        </div>
+    </div>
+</div>
