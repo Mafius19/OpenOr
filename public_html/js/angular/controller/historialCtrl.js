@@ -5,9 +5,9 @@ miApp.controller('historialCtrl', ['$scope', '$rootScope', 'appRegService', 'ngT
 //then devuelve los datos del json A datos
 appRegService.getHistorial().then(function(datos){
             $rootScope.registrosRoot = datos;
-            $scope.registros = $rootScope.registrosRoot;
+            $scope.registros = $rootScope.registrosRoot.items;
             
-            var data = $rootScope.registrosRoot;
+            var data = $rootScope.registrosRoot.items;
             $scope.tableParams = new ngTableParams({
                 
             page: 1, // show first page
@@ -18,7 +18,7 @@ appRegService.getHistorial().then(function(datos){
                     //cuando hago $scope.tableParams.reload, esta funcion getData
                     //se ejecuta nuevamente y recargo otra vez la fuente de datos data
                     //con el array actualizado
-                    data = $rootScope.registrosRoot;
+                    data = $scope.registros;;
                             //actualizo parametros seteados en la primera carga
                             params.total(data.length);
                             //actualizo el params.page a uno si se da la situacion de borrar el
@@ -27,7 +27,9 @@ appRegService.getHistorial().then(function(datos){
                     params.page(1);
                     }
                     //obtengo los elementos de la pagina actual a mostrar
-                    $defer.resolve(data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                    $scope.accounts = data.slice((params.page() - 1) * params.count(), params.page() * params.count());
+                    $defer.resolve($scope.accounts);
+                    //$defer.resolve(data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
                    }
             });
     });

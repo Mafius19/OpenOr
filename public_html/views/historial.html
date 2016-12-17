@@ -1,36 +1,38 @@
+
+
 <div class="container">
     <div class="row">
-        <h2>Busqueda de Ordenanzas</h2>
+        <h3>Busqueda de Ordenanzas</h3>
     </div>
     <div class="row">
         <h4>Filtros:</h4>
         <div class="panel panel-default">
             <div class="panel-body form-horizontal">
                 <div class="form-group">
-                    <label for="cliente" class="col-sm-3 control-label">Nro. de Ordenanza:</label>
+                    <label for="cliente" class="col-sm-3 control-label">Año:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="cliente" name="cliente" placeholder="nro de ordenanza a buscar" ng-model="search.cliente">
+                        <input type="text" class="form-control" id="cliente" name="cliente" placeholder="código de cliente a buscar" ng-model="search.Ordenanzaanio">
                     </div>
                 </div>                            
                 <div class="form-group">
-                    <label for="concepto" class="col-sm-3 control-label">Palabra Clave:</label>
+                    <label for="concepto" class="col-sm-3 control-label">Tema:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="concepto" name="concepto" placeholder="palabra clave a buscar" ng-model="search.concepto">
+                        <input type="text" class="form-control" id="concepto" name="concepto" placeholder="concepto a buscar" ng-model="search.Ordenanzatema">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="descripcion" class="col-sm-3 control-label">Tema:</label>
+                    <label for="descripcion" class="col-sm-3 control-label">Unidad:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="tema a buscar" ng-model="search.descripcion">
+                        <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="descripción a buscar" ng-model="search.Ordenanzaunidad">
                     </div>
-                </div>
+                </div> 
                 <div class="form-group">
-                    <label for="cliente" class="col-sm-3 control-label">Año de Publicacion:</label>
+                    <label for="descripcion" class="col-sm-3 control-label">Nro.Ordenanza</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="cliente" name="cliente" placeholder="año de publicacion a buscar" ng-model="search.cliente">
-                    </div> 
+                        <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="descripción a buscar" ng-model="search.Ordenanzanumero">
+                    </div>
+                </div> 
 
-                </div>
                 <div class="form-group">
                     <div class="col-sm-12 text-right">
 <!--
@@ -48,7 +50,6 @@
     </div> <!-- / panel preview -->
 
     <div class="row">
-        <h4>Resultado/s de Busqueda :</h4>
         <div class="col-xs-12 text-center">
             <div id="cargando" style="display: none; color:#ff0000;">Cargando...</div> <!-- Establezco el estilo del mensaje de carga -->
 
@@ -56,45 +57,49 @@
                 <thead>
                     <tr>
                         <th>
-                            <a href="" ng-click="ordenarPor('cliente')">
-                                Nro. de ordenanza
+                            <a href="" ng-click="ordenarPor('Ordenanzaanio')">
+                                Año
                             </a>
-                            <span class="caret" style="cursor:pointer" ng-click="ordenarPor('-cliente')"></span>
+                            <span class="caret" style="cursor:pointer" ng-click="ordenarPor('-Ordenanzaanio')"></span>
                         </th>
                         <th>
-                            <a href="" ng-click="ordenarPor('concepto')">
-                                Palabra Clave
+                            <a href="" ng-click="ordenarPor('Ordenanzanumero')">
+                                Numero
                             </a>
-                            <span class="caret" style="cursor:pointer" ng-click="ordenarPor('-concepto')"></span>
+                            <span class="caret" style="cursor:pointer" ng-click="ordenarPor('-Ordenanzanumero')"></span>
                         </th>
                         <th>
                             Tema
                         </th>
-                        <!--
                         <th>
-                            <a href="" ng-click="ordenarPor('cantidad')">
-                                Cantidad
+                            <a href="" ng-click="ordenarPor('Ordenanzaunidad')">
+                                Unidad
                             </a>
-                            <span class="caret" style="cursor:pointer" ng-click="ordenarPor('-cantidad')"></span>
-                        </th> 
-                        -->
-                        <th>Estado</th>
+                            <span class="caret" style="cursor:pointer" ng-click="ordenarPor('-Ordenanzaunidad')"></span>
+                        </th>
                         <th>
-                            <a href="" ng-click="ordenarPor('fecha')">
+                            <a href="" ng-click="ordenarPor('Ordenanzafechacarga')">
                                 Fecha
                             </a>
-                            <span class="caret" style="cursor:pointer" ng-click="ordenarPor('-fecha')"></span>
+                            <span class="caret" style="cursor:pointer" ng-click="ordenarPor('-Ordenanzafechacarga')"></span>
+                        </th>
+                        <th>
+                            Opciones
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="registro in registros | filter:search | orderBy:ordenSeleccionado">
-                        <td>{{registro.cliente}}</td>
-                        <td>{{registro.concepto | uppercase}}</td>
-                        <td>{{registro.descripcion}}</td>
-                        <!--<td>{{registro.cantidad | currency}}</td> -->
-                        <td>{{registro.estado}}</td>
-                        <td>{{registro.fecha | date:'dd/MM/yyyy'}}</td>
+                    <tr ng-repeat="registro in accounts | filter:search | orderBy:ordenSeleccionado">
+                        <td>{{registro.Ordenanzaanio}}</td>
+                        <td>{{registro.Ordenanzanumero | uppercase}}</td>
+                        <td>{{registro.Ordenanzatema}}</td>
+                        <td>{{registro.Ordenanzaunidad | currency}}</td>
+                        <td>{{registro.Ordenanzafechacarga | date:'dd/MM/yyyy'}}</td>
+                         <td>
+                            <button class="btn btn-success" ng-click="selectRegistry(registro)">
+                                <span class="glyphicon glyphicon glyphicon-zoom-in"></span>
+                            </button>
+                        </td>
                     </tr>
                 </tbody> <!-- Los pagos realizados van aquí-->
             </table>                            

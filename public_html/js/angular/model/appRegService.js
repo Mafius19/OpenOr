@@ -6,7 +6,7 @@ miApp.service('appRegService',function($http,$q,$rootScope){
     this.getHistorial = function () {
         var datosRecu = null;
         var deferred = $q.defer();
-        $http.get("js/data.json").success(function(datos){
+        $http.get("js/ordenanzas.json").success(function(datos){
             //console.log("entro aqui ....")
 //            angular.forEach(datos, function (data){
 //                finalizedPayments.push(data);
